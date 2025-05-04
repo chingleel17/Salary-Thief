@@ -1,0 +1,170 @@
+/** Modern Layout for Salary Thief **/
+page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+}
+.modern-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+/* 步驟0：暱稱輸入 */
+.nickname-step {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20vh;
+}
+.nickname-header {
+  display: flex;
+  align-items: center;
+  gap: 32rpx;
+  width: 80vw;
+  justify-content: flex-start;
+}
+.avatar {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2rpx 8rpx #dbeafe;
+}
+.nickname-input {
+  flex: 1;
+  font-size: 36rpx;
+  border: none;
+  border-bottom: 2rpx solid #cbd5e1;
+  background: transparent;
+  outline: none;
+  padding: 16rpx 0;
+}
+
+/* 步驟1：薪資輸入 */
+.salary-step {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18vh;
+}
+.salary-header {
+  width: 80vw;
+  margin-bottom: 32rpx;
+}
+.nickname-display {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #334155;
+}
+.salary-form {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  gap: 40rpx;
+}
+.salary-input {
+  font-size: 36rpx;
+  border: none;
+  border-bottom: 2rpx solid #cbd5e1;
+  background: transparent;
+  outline: none;
+  padding: 16rpx 0;
+}
+
+/* 步驟2：主畫面 */
+.main-step {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 8vh;
+}
+.main-header {
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+.nickname-left {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+.avatar-small {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2rpx 8rpx #dbeafe;
+}
+.earnings-circle-wrapper {
+  position: relative;
+  width: 480rpx;
+  height: 480rpx;
+  margin: 40rpx auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.plus-one {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 44rpx;
+  color: #f43f5e;
+  font-weight: bold;
+  pointer-events: none;
+  z-index: 10;
+  text-shadow: 0 2rpx 8rpx #fff3;
+}
+.earnings-circle {
+  width: 480rpx;
+  height: 480rpx;
+  border-radius: 50%;
+  background: transparent;
+  /* 新增：加上淺灰色外框 */
+  border: 4rpx solid #e5e7eb;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+.earnings-amount {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.earnings-value {
+  font-size: 80rpx;
+  font-weight: bold;
+  color: #2563eb;
+}
+.earnings-label {
+  display: block;
+  font-size: 36rpx;
+  color: #64748b;
+  margin-top: 12rpx;
+}
+.main-actions {
+  margin-top: 60rpx;
+  display: flex;
+  justify-content: center;
+  gap: 40rpx;
+}
+.main-btn {
+  font-size: 40rpx;
+  padding: 28rpx 100rpx;
+  border-radius: 48rpx;
+  background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4rpx 16rpx #93c5fd;
+  font-weight: 600;
+}

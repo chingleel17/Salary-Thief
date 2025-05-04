@@ -1,0 +1,46 @@
+<!--index.wxml-->
+<view class="modern-container">
+  <!-- 步驟0：輸入暱稱 -->
+  <view wx:if="{{step === 0}}" class="nickname-step">
+    <view class="nickname-header">
+      <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+      <input type="text" class="nickname-input" placeholder="請輸入暱稱" data-type="nickname" bind:change="onInputChange" />
+    </view>
+  </view>
+
+  <!-- 步驟1：輸入薪水與工作天數 -->
+  <view wx:elif="{{step === 1}}" class="salary-step">
+    <view class="salary-header">
+      <text class="nickname-display">{{userInfo.nickName}}</text>
+    </view>
+    <view class="salary-form">
+      <input type="number" class="salary-input" placeholder="請輸入月薪" data-type="salary" bind:change="onInputChange" />
+      <input type="number" class="salary-input" placeholder="請輸入月工作天數" data-type="workingDays" bind:change="onInputChange" />
+    </view>
+  </view>
+
+  <!-- 步驟2：主畫面 -->
+  <view wx:elif="{{step === 2}}" class="main-step">
+    <view class="main-header">
+      <view class="nickname-left">
+        <image class="avatar-small" src="{{userInfo.avatarUrl}}"></image>
+        <text class="nickname-display">{{userInfo.nickName}}</text>
+      </view>
+    </view>
+    <view class="earnings-circle-wrapper">
+      <canvas id="waveCanvas" canvas-id="waveCanvas" class="earnings-circle" type="2d"></canvas>
+      <!-- +1 動畫 -->
+      <block wx:for="{{plusList}}" wx:key="id">
+        <view class="plus-one" style="top: {{item.top}}rpx; opacity: {{item.opacity}};">{{item.value}}</view>
+      </block>
+      <view class="earnings-amount">
+        <text class="earnings-value">{{todayEarnings}}</text>
+        <text class="earnings-label">今日所得</text>
+      </view>
+    </view>
+    <view class="main-actions">
+      <button wx:if="{{!isClockedIn}}" class="main-btn" bindtap="onClockIn">打卡上班</button>
+      <button wx:if="{{isClockedIn}}" class="main-btn" bindtap="onClockOut">下班</button>
+    </view>
+  </view>
+</view>
