@@ -34,12 +34,13 @@
         <view class="plus-one" style="top: {{item.top}}rpx; opacity: {{item.opacity}};">{{item.value}}</view>
       </block>
       <view class="earnings-amount">
+        <text class="earnings-label">今日已偷了</text>
         <text class="earnings-value">{{todayEarnings}}</text>
-        <text class="earnings-label">今日所得</text>
+        <text class="earnings-label">元</text>
       </view>
     </view>
     <view class="main-actions">
-      <button wx:if="{{!isClockedIn}}" class="main-btn" bindtap="onClockIn">打卡上班</button>
+      <button wx:if="{{!isClockedIn}}" class="main-btn" bindtap="onClockIn">上班</button>
       <button wx:if="{{isClockedIn}}" class="main-btn" bindtap="onClockOut">下班</button>
     </view>
   </view>
