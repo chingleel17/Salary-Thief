@@ -84,87 +84,172 @@ page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  margin-top: 8vh;
+  justify-content: flex-start; /* 從頂部開始排列 */
+  padding-top: 20rpx; /* 增加頂部內邊距 */
+  height: 100vh; /* 佔滿螢幕高度 */
+  box-sizing: border-box; /* 包含 padding */
 }
 .main-header {
-  width: 80vw;
   display: flex;
+  justify-content: space-between; /* 左右分佈 */
   align-items: center;
-  margin-bottom: 24rpx;
+  width: 100%;
+  padding: 10rpx 40rpx; /* 調整上下左右內邊距 */
+  box-sizing: border-box; /* 包含 padding */
+  margin-bottom: 30rpx; /* 與下方元素的間距 */
 }
-.nickname-left {
+.user-info-header {
   display: flex;
   align-items: center;
-  gap: 20rpx;
+    /* 防止文字過長影響佈局 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 60%; /* 限制最大寬度 */
 }
 .avatar-small {
-  width: 64rpx;
-  height: 64rpx;
+  width: 60rpx;
+  height: 60rpx;
   border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 2rpx 8rpx #dbeafe;
+  margin-right: 15rpx;
+}
+.nickname-display {
+  font-size: 30rpx; /* 調整字體大小 */
+  color: #333;
+}
+.datetime-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* 右對齊 */
+  font-size: 24rpx;
+  color: #888;
+  flex-shrink: 0;
+}
+.date-text {
+  margin-bottom: 4rpx;
+}
+.time-text {
+  font-weight: 500; /* 中等粗細 */
 }
 .earnings-circle-wrapper {
-  position: relative;
-  width: 480rpx;
-  height: 480rpx;
-  margin: 40rpx auto 0 auto;
+  position: relative; /* 相對定位，用於內部絕對定位 */
+  width: 480rpx; /* 固定寬度 */
+  height: 480rpx; /* 固定高度 */
+  margin: 60rpx 0; /* 上下邊距 */
   display: flex;
   align-items: center;
   justify-content: center;
+  /* border: 1px solid #eee; */ /* 測試邊框 */
 }
-.plus-one {
+
+/* Canvas 樣式已在 WXML 中通過 style 設置 */
+#waveCanvas {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 44rpx;
-  color: #f43f5e;
-  font-weight: bold;
-  pointer-events: none;
-  z-index: 10;
-  text-shadow: 0 2rpx 8rpx #fff3;
-}
-.earnings-circle {
-  width: 480rpx;
-  height: 480rpx;
-  border-radius: 50%;
-  background: transparent;
-  /* 新增：加上淺灰色外框 */
-  border: 4rpx solid #e5e7eb;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
-}
-.earnings-amount {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Canvas 在底層 */
+  border-radius: 50%; /* 確保 Canvas 本身也是圓的 */
+  border: 4rpx solid #E0E0E0; /* 添加邊框 */
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.05); /* 添加陰影 */
+  box-sizing: border-box;
+ }
+
+.earnings-info {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2; /* 在 Canvas 之上 */
+  pointer-events: none; /* 允許點擊穿透 */
+  width: 100%;
   text-align: center;
 }
-.earnings-value {
-  font-size: 80rpx;
-  font-weight: bold;
-  color: #2563eb;
-}
 .earnings-label {
-  display: block;
-  font-size: 36rpx;
-  color: #64748b;
-  margin-top: 12rpx;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 8rpx;
 }
-.main-actions {
-  margin-top: 60rpx;
+.earnings-value {
+  font-size: 72rpx; /* 加大字體 */
+  font-weight: bold;
+  color: #1d4ed8; /* 深藍色 */
+  line-height: 1.1;
+  margin-bottom: 8rpx;
+}
+.earnings-unit {
+    font-size: 28rpx;
+    color: #666;
+}
+.plus-animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3; /* 在金額之上 */
+    pointer-events: none; /* 允許點擊穿透 */
+    overflow: hidden; /* 隱藏超出範圍的動畫 */
+}
+.plus-one {
+  position: absolute; /* 相對於 .plus-animation-container 定位 */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 26rpx; /* 調整大小 */
+  font-weight: bold;
+  color: #f59e0b; /* 琥珀色 */
+  padding: 4rpx 8rpx;
+  border-radius: 10rpx;
+  background-color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap; /* 防止換行 */
+  /* transition 由 JS 控制 top 和 opacity */
+}
+.action-buttons {
+  width: 100%;
   display: flex;
   justify-content: center;
-  gap: 40rpx;
+  margin-top: 60rpx;
+  padding-bottom: 60rpx; /* 底部留白 */
 }
-.main-btn {
-  font-size: 40rpx;
-  padding: 28rpx 100rpx;
-  border-radius: 48rpx;
-  background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+.clock-btn {
+  width: 250rpx; /* 加寬按鈕 */
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  border-radius: 45rpx;
   color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+  box-shadow: 0 6rpx 12rpx rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+.clock-btn:active {
+    transform: translateY(2rpx);
+    box-shadow: 0 3rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+.clock-in {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6); /* 藍色漸變 */
+}
+.clock-out {
+  background: linear-gradient(135deg, #fca5a5, #ef4444); /* 紅色漸變 */
+}
+.reset-button {
+  position: absolute;
+  top: 90rpx; /* 調整位置 */
+  right: 4rpx; /* 放在膠囊按鈕左邊一點 */
+  font-size: 24rpx;
+  color: #999;
+  padding: 10rpx;
+  background-color: transparent;
   border: none;
-  box-shadow: 0 4rpx 16rpx #93c5fd;
-  font-weight: 600;
+  /* 增加點擊區域 */
+  min-width: 60rpx;
+  text-align: center;
+}
+.reset-button::after {
+  border: none; /* 移除按鈕默認邊框 */
 }

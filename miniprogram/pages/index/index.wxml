@@ -1,3 +1,4 @@
+<wxs module="fmt" src="../../utils/format.wxs"></wxs>
 <!--index.wxml-->
 <view class="modern-container">
   <!-- 步驟0：輸入暱稱 -->
@@ -26,6 +27,12 @@
         <image class="avatar-small" src="{{userInfo.avatarUrl}}"></image>
         <text class="nickname-display">{{userInfo.nickName}}</text>
       </view>
+      <view class="datetime-display">
+        <text class="date-text">{{currentDate}}</text>
+        <text class="time-text">{{currentTime}}</text>
+      </view>
+      <!-- 重設按鈕 -->
+      <button class="reset-button" size="mini" bindtap="resetData">重設</button>
     </view>
     <view class="earnings-circle-wrapper">
       <canvas id="waveCanvas" canvas-id="waveCanvas" class="earnings-circle" type="2d"></canvas>
@@ -33,9 +40,10 @@
       <block wx:for="{{plusList}}" wx:key="id">
         <view class="plus-one" style="top: {{item.top}}rpx; opacity: {{item.opacity}};">{{item.value}}</view>
       </block>
-      <view class="earnings-amount">
+      <view class="earnings-info">
         <text class="earnings-label">今日已偷了</text>
-        <text class="earnings-value">{{todayEarnings}}</text>
+        
+        <text class="earnings-value">{{fmt.toFixed2(todayEarnings)}}</text>
         <text class="earnings-label">元</text>
       </view>
     </view>
