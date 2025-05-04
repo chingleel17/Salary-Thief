@@ -61,7 +61,7 @@ page {
 .nickname-display {
   font-size: 40rpx;
   font-weight: 600;
-  color: #334155;
+  color: #333;
 }
 .salary-form {
   width: 80vw;
@@ -107,16 +107,18 @@ page {
   white-space: nowrap;
   max-width: 60%; /* 限制最大寬度 */
 }
+.nickname-left{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .avatar-small {
   width: 60rpx;
   height: 60rpx;
   border-radius: 50%;
   margin-right: 15rpx;
 }
-.nickname-display {
-  font-size: 30rpx; /* 調整字體大小 */
-  color: #333;
-}
+
 .datetime-display {
   display: flex;
   flex-direction: column;
@@ -127,8 +129,6 @@ page {
 }
 .date-text {
   margin-bottom: 4rpx;
-}
-.time-text {
   font-weight: 500; /* 中等粗細 */
 }
 .earnings-circle-wrapper {
@@ -199,7 +199,7 @@ page {
   position: absolute; /* 相對於 .plus-animation-container 定位 */
   left: 50%;
   transform: translateX(-50%);
-  font-size: 26rpx; /* 調整大小 */
+  font-size: 1rem; /* 調整大小 */
   font-weight: bold;
   color: #f59e0b; /* 琥珀色 */
   padding: 4rpx 8rpx;

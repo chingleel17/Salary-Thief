@@ -28,8 +28,7 @@
         <text class="nickname-display">{{userInfo.nickName}}</text>
       </view>
       <view class="datetime-display">
-        <text class="date-text">{{currentDate}}</text>
-        <text class="time-text">{{currentTime}}</text>
+        <text class="date-text">{{currentDate}} {{currentTime}}</text>
       </view>
       <!-- 重設按鈕 -->
       <button class="reset-button" size="mini" bindtap="resetData">重設</button>
@@ -41,8 +40,7 @@
         <view class="plus-one" style="top: {{item.top}}rpx; opacity: {{item.opacity}};">{{item.value}}</view>
       </block>
       <view class="earnings-info">
-        <text class="earnings-label">今日已偷了</text>
-        
+        <text class="earnings-label">今日已偷了</text>        
         <text class="earnings-value">{{fmt.toFixed2(todayEarnings)}}</text>
         <text class="earnings-label">元</text>
       </view>
